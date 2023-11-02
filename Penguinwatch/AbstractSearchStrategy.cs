@@ -2,6 +2,7 @@ namespace Penguinwatch;
 
 public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
 {
+    // TODO: Put below functions above.
     public string GetSpecies()
     {
         return FindSpeciesInDict(GetUserSpeciesChoice());
@@ -19,7 +20,8 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         while (!optionSelected)
         {
             Console.SetCursorPosition(leftPos, topPos);
-                
+            
+            // TODO: Add all species option.
             Console.WriteLine($"{(option == 0 ? optionSelectedColour : "")}1. King Penguin\u001b[0m");
             Console.WriteLine($"{(option == 1 ? optionSelectedColour : "")}2. Emperor Penguin\u001b[0m");
             Console.WriteLine($"{(option == 2 ? optionSelectedColour : "")}3. Adélie Penguin\u001b[0m");
@@ -100,7 +102,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         return species[option];
     }
 
-    public abstract Tuple<double, double> GetLocation();
+    public abstract (double, double) GetLocation();
 
-    public abstract void CallAPI(Tuple<double, double> location);
+    public abstract void CallAPI((double, double) location);
 }
