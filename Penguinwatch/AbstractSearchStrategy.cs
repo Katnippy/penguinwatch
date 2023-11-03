@@ -2,7 +2,7 @@ namespace Penguinwatch;
 
 public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
 {
-    // TODO: Put below functions above.
+    // TODO: Needs comments!
     public string GetSpecies()
     {
         return FindSpeciesInDict(GetUserSpeciesChoice());
@@ -42,7 +42,8 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
             Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}18. Macaroni Penguin\u001b[0m");
             
             var key = Console.ReadKey(true);
-
+            
+            // ! Replace magic numbers.
             switch (key.Key)
             {
                 case ConsoleKey.DownArrow:

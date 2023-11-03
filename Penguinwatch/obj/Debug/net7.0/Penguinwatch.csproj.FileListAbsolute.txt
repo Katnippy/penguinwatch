@@ -1,0 +1,15 @@
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/bin/Debug/net7.0/Penguinwatch
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/bin/Debug/net7.0/Penguinwatch.deps.json
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/bin/Debug/net7.0/Penguinwatch.runtimeconfig.json
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/bin/Debug/net7.0/Penguinwatch.dll
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/bin/Debug/net7.0/Penguinwatch.pdb
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.csproj.AssemblyReference.cache
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.GeneratedMSBuildEditorConfig.editorconfig
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.AssemblyInfoInputs.cache
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.AssemblyInfo.cs
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.csproj.CoreCompileInputs.cache
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.dll
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/refint/Penguinwatch.dll
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.pdb
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/Penguinwatch.genruntimeconfig.cache
+/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch/obj/Debug/net7.0/ref/Penguinwatch.dll

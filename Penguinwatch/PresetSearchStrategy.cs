@@ -7,7 +7,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
         return FindLocationInDict(GetUserLocationChoice());
     }
     
-        private int GetUserLocationChoice()
+    private int GetUserLocationChoice()
     {
         var optionSelected = false;
         var option = 0;
@@ -58,10 +58,11 @@ public class PresetSearchStrategy : AbstractSearchStrategy
             Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}" + 
                               "18. Inaccessible Island, St Helena, Ascension, and Tristan da Cunha\u001b[0m");
             Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}" + 
-                              "18. Macquarie Island, Australia\u001b[0m");
+                              "19. Macquarie Island, Australia\u001b[0m");
             
             var key = Console.ReadKey(true);
-
+            
+            // ! Replace magic numbers.
             switch (key.Key)
             {
                 case ConsoleKey.DownArrow:
@@ -102,7 +103,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
             { 1, (-51.35, -60.69) },
             { 2, (-51.47, -57.84) },
             { 3, (-51.72, -61.30) },
-            { 4, (-64.47, -57.20) },
+            { 4, (-64.47, -57.20) }, 
             { 5, (-66.67, 140.00) },
             { 6, (-38.48, 145.23) },
             { 7, (-45.11, 170.98) },
