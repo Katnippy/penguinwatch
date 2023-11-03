@@ -33,7 +33,7 @@ public class CustomSearchStrategy : AbstractSearchStrategy
             }
         } while (true);
         
-        return (lat, lng);
+        return (Math.Round(lat, 2), Math.Round(lng, 2));
     }
     
     public override void CallAPI((double, double) location)
