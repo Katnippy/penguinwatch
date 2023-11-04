@@ -1,3 +1,5 @@
+using System.Net.Http.Json;
+
 namespace Penguinwatch;
 
 public class PresetSearchStrategy : AbstractSearchStrategy
@@ -123,15 +125,5 @@ public class PresetSearchStrategy : AbstractSearchStrategy
         };
         
         return locations[option];
-    }
-
-    public override string CallAPI(HttpClient client, string species, (double, double) location, string APIKey)
-    { 
-        var request = new HttpRequestMessage(HttpMethod.Get, 
-            "https://api.ebird.org/v2/data/nearest/geo/recent/" +
-            $"{species}?lat={location.Item1}&lng={location.Item2}");
-        request.Headers.Add("X-eBirdApiToken", APIKey);
-        var result = client.SendAsync(request).Result;
-        return result.IsSuccessStatusCode ? result.Content.ReadAsStringAsync().Result : "Error";
     }
 }

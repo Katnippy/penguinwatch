@@ -1,3 +1,5 @@
+using System.Net.Http.Json;
+
 namespace Penguinwatch;
 
 public class CustomSearchStrategy : AbstractSearchStrategy
@@ -38,17 +40,5 @@ public class CustomSearchStrategy : AbstractSearchStrategy
         } while (true);
         
         return (Math.Round(lat, 2), Math.Round(lng, 2));
-    }
-    
-    // TODO: Handle timeout, errors, and empty result.
-    // TODO: Make asynchronous.
-    public override string CallAPI(HttpClient client, string species, (double, double) location, string APIKey)
-    {
-        var request = new HttpRequestMessage(HttpMethod.Get, 
-            "https://api.ebird.org/v2/data/nearest/geo/recent/" +
-            $"{species}?lat={location.Item1}&lng={location.Item2}");
-        request.Headers.Add("X-eBirdApiToken", APIKey);
-        var result = client.SendAsync(request).Result;
-        return result.IsSuccessStatusCode ? result.Content.ReadAsStringAsync().Result : "Error";
     }
 }

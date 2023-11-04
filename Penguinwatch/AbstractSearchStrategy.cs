@@ -114,6 +114,22 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
 
         return Console.ReadLine();
     }
+    
+    // TODO: Handle timeout, errors, and empty result.
+    public async Task<string> CallAPI(HttpClient client, string species, (double, double) location, 
+                                      string APIKey)
+    { 
+        var request = new HttpRequestMessage(HttpMethod.Get, 
+            "https://api.ebird.org/v2/data/nearest/geo/recent/" +
+            $"{species}?lat={location.Item1}&lng={location.Item2}");
+        request.Headers.Add("X-eBirdApiToken", APIKey);
+        var response = await client.SendAsync(request);
+        var result = "";
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadAsStringAsync();
+        }
 
-    public abstract string CallAPI(HttpClient client, string species, (double, double) location, string APIKey);
+        return result;
+    }
 }
