@@ -14,13 +14,13 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         var option = 0;
         var (leftPos, topPos) = Console.GetCursorPosition();
         const string optionSelectedColour = "\u001b[32m";
-        
+
         Console.WriteLine("What species of penguin would you like to see?");
-        
+
         while (!optionSelected)
         {
             Console.SetCursorPosition(leftPos, topPos);
-            
+
             // TODO: Add all species option.
             Console.WriteLine($"{(option == 0 ? optionSelectedColour : "")}1. King Penguin\u001b[0m");
             Console.WriteLine($"{(option == 1 ? optionSelectedColour : "")}2. Emperor Penguin\u001b[0m");
@@ -40,9 +40,9 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
             Console.WriteLine($"{(option == 15 ? optionSelectedColour : "")}16. Northern Rockhopper Penguin\u001b[0m");
             Console.WriteLine($"{(option == 16 ? optionSelectedColour : "")}17. Royal Penguin\u001b[0m");
             Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}18. Macaroni Penguin\u001b[0m");
-            
+
             var key = Console.ReadKey(true);
-            
+
             // ! Replace magic numbers.
             switch (key.Key)
             {
@@ -54,6 +54,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
                     {
                         option++;
                     }
+
                     break;
                 case ConsoleKey.UpArrow:
                     if (option == 0)
@@ -63,6 +64,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
                     {
                         option--;
                     }
+
                     break;
                 case ConsoleKey.Enter:
                     optionSelected = true;
@@ -105,5 +107,12 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
 
     public abstract (double, double) GetLocation();
 
-    public abstract void CallAPI((double, double) location);
+    public string GetUserAPIKey()
+    {
+        Console.Write("Enter your eBird API key: ");
+
+        return Console.ReadLine();
+    }
+
+    public abstract string CallAPI(HttpClient client, string species, (double, double) location, string APIKey);
 }

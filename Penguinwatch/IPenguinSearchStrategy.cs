@@ -4,5 +4,6 @@ public interface IPenguinSearchStrategy
 {
     string GetSpecies();
     (double, double) GetLocation(); // ? Distance, too?
-    void CallAPI((double, double) location); // ? Not sure what this'll return just yet.
+    string GetUserAPIKey();
+    string CallAPI(HttpClient client, string species, (double, double) location, string APIKey); // ? Not sure what this'll return just yet.
 }
