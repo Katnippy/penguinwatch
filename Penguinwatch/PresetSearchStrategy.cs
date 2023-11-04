@@ -14,6 +14,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
         var (leftPos, topPos) = Console.GetCursorPosition();
         const string optionSelectedColour = "\u001b[32m";
         
+        // ? Observed? For consistency.
         Console.WriteLine("Select a location from where penguins can be seen.");
         
         while (!optionSelected)
@@ -62,11 +63,12 @@ public class PresetSearchStrategy : AbstractSearchStrategy
             
             var key = Console.ReadKey(true);
             
-            // ! Replace magic numbers.
+            const int maxOption = 18;
+            const int minOption = 0;
             switch (key.Key)
             {
                 case ConsoleKey.DownArrow:
-                    if (option == 18)
+                    if (option == maxOption)
                     {
                     }
                     else
@@ -75,7 +77,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
                     }
                     break;
                 case ConsoleKey.UpArrow:
-                    if (option == 0)
+                    if (option == minOption)
                     {
                     }
                     else

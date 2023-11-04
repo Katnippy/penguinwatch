@@ -42,12 +42,13 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
             Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}18. Macaroni Penguin\u001b[0m");
 
             var key = Console.ReadKey(true);
-
-            // ! Replace magic numbers.
+            
+            const int maxOption = 17;
+            const int minOption = 0;
             switch (key.Key)
             {
                 case ConsoleKey.DownArrow:
-                    if (option == 17)
+                    if (option == maxOption)
                     {
                     }
                     else
@@ -57,7 +58,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
 
                     break;
                 case ConsoleKey.UpArrow:
-                    if (option == 0)
+                    if (option == minOption)
                     {
                     }
                     else
