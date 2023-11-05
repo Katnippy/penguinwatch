@@ -17,13 +17,12 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         var option = 0;
         var (leftPos, topPos) = Console.GetCursorPosition();
         const string optionSelectedColour = "\u001b[32m";
-
-        Console.WriteLine("What species of penguin would you like to see?");
-
         while (!optionSelected)
         {
             Console.SetCursorPosition(leftPos, topPos);
 
+            Console.Clear();
+            Console.WriteLine("What species of penguin would you like to see?");
             // TODO: Add all species option.
             Console.WriteLine($"{(option == 0 ? optionSelectedColour : "")}1. King Penguin\u001b[0m");
             Console.WriteLine($"{(option == 1 ? optionSelectedColour : "")}2. Emperor Penguin\u001b[0m");

@@ -15,14 +15,12 @@ public class PresetSearchStrategy : AbstractSearchStrategy
         var option = 0;
         var (leftPos, topPos) = Console.GetCursorPosition();
         const string optionSelectedColour = "\u001b[32m";
-        
-        // ? Observed? For consistency.
-        Console.WriteLine("Select a location from where penguins can be seen.");
-        
         while (!optionSelected)
         {
             Console.SetCursorPosition(leftPos, topPos);
             
+            Console.Clear();
+            Console.WriteLine("Select a location from where penguins can be observed.");
             // ? Maybe indicate what species can be seen?
             Console.WriteLine($"{(option == 0 ? optionSelectedColour : "")}" + 
                               "1. St. Andrew's Bay, South Georgia and the South Sandwich Islands\u001b[0m");
