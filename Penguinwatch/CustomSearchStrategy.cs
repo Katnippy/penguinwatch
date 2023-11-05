@@ -4,7 +4,6 @@ namespace Penguinwatch;
 
 public class CustomSearchStrategy : AbstractSearchStrategy
 {
-    // TODO: Add tests with xUnit.
     public override (double, double) GetLocation()
     {
         double lat;

@@ -1,6 +1,6 @@
 ﻿using Penguinwatch;
 
-class Program
+public class Program
 {
     private static HttpClient _client = new();
 
@@ -79,7 +79,6 @@ class Program
     
     public static async Task Main()
     {
-        // TODO: Add tests with xUnit.
         if (GetUserCustomOrPresetChoice() == 0)
         {
             CustomSearchStrategy custom = new();
@@ -87,7 +86,6 @@ class Program
             var observations = await task;
             PrintObservations(observations);
         }
-        // TODO: Add tests with xUnit.
         else
         {
             PresetSearchStrategy custom = new();
