@@ -4,6 +4,62 @@ class Program
 {
     private static HttpClient _client = new();
 
+    // TODO: Make program quittable at any time with Q (and make user aware of that).
+    // TODO: Fix glitched text (this happens elsewhere, too).
+    private static int GetUserCustomOrPresetChoice()
+    {
+        var optionSelected = false;
+        var option = 0;
+        var (leftPos, topPos) = Console.GetCursorPosition();
+        const string optionSelectedColour = "\u001b[32m";
+
+        Console.WriteLine("Would you like to see penguins in your location, or in another preset location?");
+
+        while (!optionSelected)
+        {
+            Console.SetCursorPosition(leftPos, topPos);
+
+            Console.WriteLine($"{(option == 0 ? optionSelectedColour : "")}1. My location\u001b[0m");
+            Console.WriteLine($"{(option == 1 ? optionSelectedColour : "")}2. Preset location\u001b[0m");
+
+            var key = Console.ReadKey(true);
+
+            const int maxOption = 1;
+            const int minOption = 0;
+            switch (key.Key)
+            {
+                case ConsoleKey.DownArrow:
+                    if (option == maxOption)
+                    {
+                    }
+                    else
+                    {
+                        option++;
+                    }
+
+                    break;
+                case ConsoleKey.UpArrow:
+                    if (option == minOption)
+                    {
+                    }
+                    else
+                    {
+                        option--;
+                    }
+
+                    break;
+                case ConsoleKey.Enter:
+                    optionSelected = true;
+                    break;
+                case ConsoleKey.Q:
+                    Environment.Exit(0);
+                    break;
+            }
+        }
+
+        return option;
+    }
+
     // ? Explicitate the species?
     private static void PrintObservations(List<PenguinObservationModel> observations)
     {
@@ -25,10 +81,8 @@ class Program
     
     public static async Task Main()
     {
-        // TODO: Change this.
-        Console.Write("Custom (1) or preset (2)? ");
         // TODO: Add tests with xUnit.
-        if (Int32.Parse(Console.ReadLine()) == 1)
+        if (GetUserCustomOrPresetChoice() == 0)
         {
             CustomSearchStrategy custom = new();
             var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserAPIKey());
