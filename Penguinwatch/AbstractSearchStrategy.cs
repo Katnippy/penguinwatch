@@ -120,6 +120,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
     
     // TODO: Handle timeout, errors, and empty result.
     // TODO: Split into 2 methods.
+    // TODO: Adjust distance (allow for user to do this, too?)
     public async Task<List<PenguinObservationModel>> CallAPI(HttpClient client, string species, 
                                                              (double, double) location, string APIKey)
     { 

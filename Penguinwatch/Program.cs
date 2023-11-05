@@ -3,6 +3,25 @@
 class Program
 {
     private static HttpClient _client = new();
+
+    // ? Explicitate the species?
+    private static void PrintObservations(List<PenguinObservationModel> observations)
+    {
+        if (observations.Any())
+        {
+            foreach (var observation in observations)
+            {
+                Console.WriteLine($"{observation.howMany} penguin{(observation.howMany > 1 ? "s have" : " has")} " +
+                                  $"been observed at{(observation.locationPrivate ? "" : $" {observation.locName}")} " +
+                                  $"{(!observation.locationPrivate ? "(" : "")}{observation.lat}, {observation.lng}" +
+                                  $"{(!observation.locationPrivate ? ")" : "")}.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("No penguins have been observed at your location.");
+        }
+    }
     
     public static async Task Main()
     {
@@ -14,14 +33,7 @@ class Program
             CustomSearchStrategy custom = new();
             var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserAPIKey());
             var observations = await task;
-
-            foreach (var observation in observations)
-            {
-                Console.WriteLine($"{observation.howMany} penguin{(observation.howMany > 1 ? "s have" : " has")} " +
-                                  $"been observed at{(observation.locationPrivate ? "" : $" {observation.locName}")} " +
-                                  $"{(!observation.locationPrivate ? "(" : "")}{observation.lat}, {observation.lng}" +
-                                  $"{(!observation.locationPrivate ? ")" : "")}.");
-            }
+            PrintObservations(observations);
         }
         // TODO: Add tests with xUnit.
         else
@@ -29,14 +41,7 @@ class Program
             PresetSearchStrategy custom = new();
             var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserAPIKey());
             var observations = await task;
-            
-            foreach (var observation in observations)
-            {
-                Console.WriteLine($"{observation.howMany} penguin{(observation.howMany > 1 ? "s have" : " has")} " +
-                                  $"been observed at{(observation.locationPrivate ? "" : $" {observation.locName}")} " +
-                                  $"{(!observation.locationPrivate ? "(" : "")}{observation.lat}, {observation.lng}" +
-                                  $"{(!observation.locationPrivate ? ")" : "")}.");
-            }
+            PrintObservations(observations);
         }
     }
 }
