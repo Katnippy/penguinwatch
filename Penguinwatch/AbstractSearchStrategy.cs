@@ -1,3 +1,6 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace Penguinwatch;
 
 public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
@@ -116,20 +119,22 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
     }
     
     // TODO: Handle timeout, errors, and empty result.
-    public async Task<string> CallAPI(HttpClient client, string species, (double, double) location, 
-                                      string APIKey)
+    // TODO: Split into 2 methods.
+    public async Task<List<PenguinObservationModel>> CallAPI(HttpClient client, string species, 
+                                                             (double, double) location, string APIKey)
     { 
         var request = new HttpRequestMessage(HttpMethod.Get, 
             "https://api.ebird.org/v2/data/nearest/geo/recent/" +
             $"{species}?lat={location.Item1}&lng={location.Item2}");
         request.Headers.Add("X-eBirdApiToken", APIKey);
         var response = await client.SendAsync(request);
-        var result = "";
+        List<PenguinObservationModel> observations = new();
         if (response.IsSuccessStatusCode)
         {
-            result = await response.Content.ReadAsStringAsync();
+            var result = await response.Content.ReadAsStringAsync();
+            observations = JsonSerializer.Deserialize<List<PenguinObservationModel>>(result);
         }
 
-        return result;
+        return observations;
     }
 }
