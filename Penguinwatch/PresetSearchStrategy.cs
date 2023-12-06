@@ -58,8 +58,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
                               "17. Antipodes Island, New Zealand\u001b[0m");
             Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}" + 
                               "18. Inaccessible Island, St Helena, Ascension, and Tristan da Cunha\u001b[0m");
-            // ! option duplicated from above.
-            Console.WriteLine($"{(option == 17 ? optionSelectedColour : "")}" + 
+            Console.WriteLine($"{(option == 18 ? optionSelectedColour : "")}" + 
                               "19. Macquarie Island, Australia\u001b[0m");
             
             var key = Console.ReadKey(true);
