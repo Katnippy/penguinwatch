@@ -65,10 +65,12 @@ public class Program
         {
             foreach (var observation in observations)
             {
-                Console.WriteLine($"{observation.howMany} penguin{(observation.howMany > 1 ? "s have" : " has")} " +
-                                  $"been observed at{(observation.locationPrivate ? "" : $" {observation.locName}")} " +
-                                  $"{(!observation.locationPrivate ? "(" : "")}{observation.lat}, {observation.lng}" +
-                                  $"{(!observation.locationPrivate ? ")" : "")}.");
+                Console.WriteLine($"{observation.HowMany} penguin{(observation.HowMany > 1 ? "s have" : " has")} " +
+                                  $"been observed at{
+                                      (observation.LocationPrivate ? "" : $" {observation.LocationName}")
+                                  } " +
+                                  $"{(!observation.LocationPrivate ? "(" : "")}{observation.Lat}, {observation.Lng}" +
+                                  $"{(!observation.LocationPrivate ? ")" : "")}.");
             }
         }
         else

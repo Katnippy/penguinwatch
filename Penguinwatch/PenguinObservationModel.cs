@@ -1,10 +1,17 @@
+using System.Text.Json.Serialization;
+
 namespace Penguinwatch;
 
 public class PenguinObservationModel
 {
-    public string locName { get; set; }
-    public int howMany { get; set; }
-    public double lat { get; set; }
-    public double lng { get; set; }
-    public bool locationPrivate { get; set; }
+    [JsonPropertyName("locName")]
+    public string LocationName { get; set; }
+    [JsonPropertyName("howMany")]
+    public int HowMany { get; set; }
+    [JsonPropertyName("lat")]
+    public double Lat { get; set; }
+    [JsonPropertyName("lng")]
+    public double Lng { get; set; }
+    [JsonPropertyName("locPrivate")]
+    public bool LocationPrivate { get; set; }
 }
