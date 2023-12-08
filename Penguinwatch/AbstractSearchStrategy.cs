@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 
@@ -163,24 +164,39 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         Thread.Sleep(2500);
     }
     
-    // TODO: Handle timeout, errors, and empty / wrong API key result.
+    // ? Do we need to handle timeouts?
     // TODO: Split into 2 methods.
     // TODO: Allow for user to adjust distance?
     public async Task<List<PenguinObservationModel>> CallApi(HttpClient client, string species, 
-                                                             (double, double) location, string ApiKey)
+                                                             (double, double) location, string apiKey)
     { 
         var request = new HttpRequestMessage(HttpMethod.Get, 
             "https://api.ebird.org/v2/data/nearest/geo/recent/" +
             $"{species}?lat={location.Item1}&lng={location.Item2}&dist=25");
-        request.Headers.Add("X-eBirdApiToken", ApiKey);
-        var response = await client.SendAsync(request);
-        List<PenguinObservationModel> observations = new();
-        if (response.IsSuccessStatusCode)
-        {
-            var result = await response.Content.ReadAsStringAsync();
-            observations = JsonSerializer.Deserialize<List<PenguinObservationModel>>(result);
-        }
+        request.Headers.Add("X-eBirdApiToken", apiKey);
 
+        var response = await client.SendAsync(request);
+        try
+        {
+            response.EnsureSuccessStatusCode();
+        }
+        catch (HttpRequestException e)
+        {
+            if (response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                Console.WriteLine("Invalid API key.");
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine(e);
+                Environment.Exit(0);
+            }
+        }
+        List<PenguinObservationModel> observations = new();
+        var result = await response.Content.ReadAsStringAsync();
+        observations = JsonSerializer.Deserialize<List<PenguinObservationModel>>(result);
+        
         return observations;
     }
 }
