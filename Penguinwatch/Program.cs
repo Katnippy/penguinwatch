@@ -76,8 +76,7 @@ public class Program
         }
         else
         {
-            // TODO: Change "your" to "this" when it's a preset.
-            Console.WriteLine("No penguins have been observed at your location.");
+            Console.WriteLine("No penguins have been observed at this location.");
         }
     }
     
