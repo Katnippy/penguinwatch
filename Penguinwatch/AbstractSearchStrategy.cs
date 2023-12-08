@@ -166,13 +166,13 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
     // TODO: Handle timeout, errors, and empty / wrong API key result.
     // TODO: Split into 2 methods.
     // TODO: Allow for user to adjust distance?
-    public async Task<List<PenguinObservationModel>> CallAPI(HttpClient client, string species, 
-                                                             (double, double) location, string APIKey)
+    public async Task<List<PenguinObservationModel>> CallApi(HttpClient client, string species, 
+                                                             (double, double) location, string ApiKey)
     { 
         var request = new HttpRequestMessage(HttpMethod.Get, 
             "https://api.ebird.org/v2/data/nearest/geo/recent/" +
             $"{species}?lat={location.Item1}&lng={location.Item2}&dist=25");
-        request.Headers.Add("X-eBirdApiToken", APIKey);
+        request.Headers.Add("X-eBirdApiToken", ApiKey);
         var response = await client.SendAsync(request);
         List<PenguinObservationModel> observations = new();
         if (response.IsSuccessStatusCode)

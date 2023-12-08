@@ -86,14 +86,14 @@ public class Program
         if (GetUserCustomOrPresetChoice() == 0)
         {
             CustomSearchStrategy custom = new();
-            var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
+            var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
             var observations = await task;
             PrintObservations(observations);
         }
         else
         {
             PresetSearchStrategy custom = new();
-            var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
+            var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
             var observations = await task;
             PrintObservations(observations);
         }
