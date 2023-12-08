@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -7,7 +8,6 @@ namespace Penguinwatch;
 
 public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
 {
-    // TODO: Needs comments!
     public string GetSpecies()
     {
         return FindSpeciesInDict(GetUserSpeciesChoice());
@@ -165,9 +165,11 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
     }
     
     // ? Do we need to handle timeouts?
-    // TODO: Split into 2 methods.
+    // ? Split into 2 methods?
     // TODO: Allow for user to adjust distance?
-    public async Task<List<PenguinObservationModel>> CallApi(HttpClient client, string species, 
+
+    // Call the appropriate API URI, return a deserialised list of observations.
+    public async Task<List<PenguinObservationModel>>? CallApi(HttpClient client, string species, 
                                                              (double, double) location, string apiKey)
     { 
         var request = new HttpRequestMessage(HttpMethod.Get, 
@@ -193,9 +195,8 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
                 Environment.Exit(0);
             }
         }
-        List<PenguinObservationModel> observations = new();
         var result = await response.Content.ReadAsStringAsync();
-        observations = JsonSerializer.Deserialize<List<PenguinObservationModel>>(result);
+        var observations = JsonSerializer.Deserialize<List<PenguinObservationModel>>(result);
         
         return observations;
     }
