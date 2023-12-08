@@ -12,7 +12,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         return FindSpeciesInDict(GetUserSpeciesChoice());
     }
 
-    private int GetUserSpeciesChoice()
+    private static int GetUserSpeciesChoice()
     {
         var optionSelected = false;
         var option = 0;
@@ -82,7 +82,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         return option;
     }
 
-    private string FindSpeciesInDict(int option)
+    private static string FindSpeciesInDict(int option)
     {
         Dictionary<int, string> species = new()
         {

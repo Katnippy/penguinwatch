@@ -9,7 +9,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
         return FindLocationInDict(GetUserLocationChoice());
     }
     
-    private int GetUserLocationChoice()
+    private static int GetUserLocationChoice()
     {
         var optionSelected = false;
         var option = 0;
@@ -97,7 +97,7 @@ public class PresetSearchStrategy : AbstractSearchStrategy
         return option;
     }
     
-    private (double, double) FindLocationInDict(int option)
+    private static (double, double) FindLocationInDict(int option)
     {
         Dictionary<int, (double, double)> locations = new()
         {
