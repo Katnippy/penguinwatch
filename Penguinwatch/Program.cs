@@ -5,6 +5,7 @@ public class Program
     private static HttpClient _client = new();
 
     // TODO: Make program quittable at any time with Q (and make user aware of that).
+    // TODO: For all option getters, if up is pressed on 1 then go to last.
     private static int GetUserCustomOrPresetChoice()
     {
         var optionSelected = false;
@@ -75,6 +76,7 @@ public class Program
         }
         else
         {
+            // TODO: Change "your" to "this" when it's a preset.
             Console.WriteLine("No penguins have been observed at your location.");
         }
     }
@@ -84,14 +86,14 @@ public class Program
         if (GetUserCustomOrPresetChoice() == 0)
         {
             CustomSearchStrategy custom = new();
-            var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserAPIKey());
+            var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
             var observations = await task;
             PrintObservations(observations);
         }
         else
         {
             PresetSearchStrategy custom = new();
-            var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserAPIKey());
+            var task = custom.CallAPI(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
             var observations = await task;
             PrintObservations(observations);
         }

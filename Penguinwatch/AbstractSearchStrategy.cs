@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 
 namespace Penguinwatch;
@@ -108,15 +110,60 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
     }
 
     public abstract (double, double) GetLocation();
-
-    public string GetUserAPIKey()
+    
+    public string GetUserApiKey()
     {
-        Console.Write("Enter your eBird API key: ");
+        string hasAKey;
+        do
+        {
+            Console.Write("Do you have an eBird API key? (Y/N) ");
+            hasAKey = Console.ReadLine().ToLower();
+            if (hasAKey == "n" || hasAKey == "no")
+            {
+                Console.WriteLine("Please go to https://ebird.org/api/keygen and obtain an API key first.");
+                Console.WriteLine("");
+                OpenEBirdWebsite();
+                Console.WriteLine("");
+            }
+            else if (hasAKey != "y" && hasAKey != "yes")
+            {
+                Console.WriteLine("Please respond by typing 'Y' for yes or 'N' for no.");
+            }
+        } while (hasAKey != "n" && hasAKey != "no" && hasAKey != "y" && hasAKey != "yes");
 
-        return Console.ReadLine();
+        string apiKey;
+        do
+        {
+            Console.Write("Enter your eBird API key: ");
+            apiKey = Console.ReadLine();
+
+            if (apiKey.Length < 12)
+            {
+                Console.WriteLine("An eBird API key should be 12 characters long.");
+            }
+        } while (apiKey.Length != 12);
+
+        return apiKey;
+    }
+
+    private static void OpenEBirdWebsite()
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Process.Start("https://ebird.org/api/keygen");
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            Process.Start("xdg-open", "https://ebird.org/api/keygen");
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            Process.Start("open", "https://ebird.org/api/keygen");
+        }
+        Thread.Sleep(2500);
     }
     
-    // TODO: Handle timeout, errors, and empty result.
+    // TODO: Handle timeout, errors, and empty / wrong API key result.
     // TODO: Split into 2 methods.
     // TODO: Allow for user to adjust distance?
     public async Task<List<PenguinObservationModel>> CallAPI(HttpClient client, string species, 

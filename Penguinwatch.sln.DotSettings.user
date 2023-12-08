@@ -1,9 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fc2a82b4_002Dd0d1_002D4c73_002Da26f_002D45d05621eb21/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestCoordinatesWithinBoundary" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::C4ACCF69-85CD-4476-8E7C-D706C7A17A0C::net7.0::Penguinwatch.Tests.Test.TestCoordinatesWithinBoundary&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::C4ACCF69-85CD-4476-8E7C-D706C7A17A0C::net7.0::Penguinwatch.Tests.Test.TestLatOutsideOfBoundary&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::C4ACCF69-85CD-4476-8E7C-D706C7A17A0C::net7.0::Penguinwatch.Tests.Test.TestLngOutsideOfBoundary&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::C4ACCF69-85CD-4476-8E7C-D706C7A17A0C::net7.0::Penguinwatch.Tests.Test.TestCoordinatesNotADouble&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1c8a8ee8_002D8135_002D4180_002Da8c4_002D87ee8335fef7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;And&gt;
+    &lt;Namespace&gt;Penguinwatch.Tests&lt;/Namespace&gt;
+    &lt;Project Location="/home/kat/hdd/programming/c#/Penguinwatch/Penguinwatch.Tests" Presentation="&amp;lt;Penguinwatch.Tests&amp;gt;" /&gt;
+  &lt;/And&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

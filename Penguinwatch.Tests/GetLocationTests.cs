@@ -1,8 +1,8 @@
 namespace Penguinwatch.Tests;
 
-public class Test
+public class GetLocationTests
 {
-    private (double, double) GetLocation(double lat, double lng)
+    private static (double, double) GetLocation(double lat, double lng)
     {
         const int minLat = -90;
         const int maxLat = 90;
@@ -28,8 +28,8 @@ public class Test
             
         return (Math.Round(lat, 2), Math.Round(lng, 2));
     }
-
-    [Fact] // Works
+    
+    [Fact]
     public void TestCoordinatesWithinBoundary()
     {
         // Arrange

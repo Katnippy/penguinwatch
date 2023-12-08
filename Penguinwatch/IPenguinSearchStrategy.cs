@@ -4,6 +4,6 @@ public interface IPenguinSearchStrategy
 {
     string GetSpecies();
     (double, double) GetLocation();
-    string GetUserAPIKey();
+    string GetUserApiKey();
     Task<List<PenguinObservationModel>> CallAPI(HttpClient client, string species, (double, double) location, string APIKey);
 }
