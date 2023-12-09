@@ -137,7 +137,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
             Console.Write("Enter your eBird API key: ");
             apiKey = Console.ReadLine();
 
-            if (apiKey.Length < 12)
+            if (apiKey.Length != 12)
             {
                 Console.WriteLine("An eBird API key should be 12 characters long.");
             }
