@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -151,7 +150,7 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Process.Start("https://ebird.org/api/keygen");
+            Process.Start(new ProcessStartInfo("https://ebird.org/api/keygen") { UseShellExecute = true });
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
