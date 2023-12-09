@@ -67,7 +67,9 @@ public class Program
         {
             foreach (var observation in observations)
             {
-                Console.WriteLine($"{observation.HowMany} penguin{(observation.HowMany > 1 ? "s have" : " has")} " +
+                Console.WriteLine($"{observation.HowMany} penguin{
+                                      (observation.HowMany > 1 || observation.HowMany == 0 ? "s have" : " has")
+                                  } " +
                                   $"been observed at{
                                       (observation.LocationPrivate ? "" : $" {observation.LocationName}")
                                   } " +
