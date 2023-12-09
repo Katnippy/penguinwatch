@@ -3,6 +3,7 @@
 public class Program
 {
     private static HttpClient _client = new();
+    private static bool _rerun = true;
 
     // TODO: Make program quittable at any time with Q (and make user aware of that).
     // TODO: For all option getters, if up is pressed on 1 then go to last.
@@ -82,19 +83,39 @@ public class Program
     
     public static async Task Main()
     {
-        if (GetUserCustomOrPresetChoice() == 0)
+        while (_rerun)
         {
-            CustomSearchStrategy custom = new();
-            var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
-            var observations = await task;
-            PrintObservations(observations);
-        }
-        else
-        {
-            PresetSearchStrategy custom = new();
-            var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
-            var observations = await task;
-            PrintObservations(observations);
+            // ? Duplicate code?
+            if (GetUserCustomOrPresetChoice() == 0)
+            {
+                CustomSearchStrategy custom = new();
+                var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
+                var observations = await task;
+                PrintObservations(observations);
+            }
+            else
+            {
+                PresetSearchStrategy custom = new();
+                var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
+                var observations = await task;
+                PrintObservations(observations);
+            }
+
+            string cont;
+            do
+            {
+                Console.Write("Do you want to continue? (Y/N) ");
+                cont = Console.ReadLine().ToLower();
+                if (cont == "n" || cont == "no")
+                {
+                    _rerun = false;
+                }
+                else if (cont != "y" && cont != "yes")
+                {
+                    Console.WriteLine("Please respond by typing 'Y' for yes or 'N' for no.");
+                }
+            } while (cont != "n" && cont != "no" && cont != "y" && cont != "yes");
+            Console.Clear();
         }
     }
 }
