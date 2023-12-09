@@ -85,22 +85,18 @@ public class Program
     {
         while (_rerun)
         {
-            // ? Duplicate code?
+            var context = new Context();
             if (GetUserCustomOrPresetChoice() == 0)
             {
-                CustomSearchStrategy custom = new();
-                var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
-                var observations = await task;
-                PrintObservations(observations);
+                context.SetStrategy(new CustomSearchStrategy());
             }
             else
             {
-                PresetSearchStrategy custom = new();
-                var task = custom.CallApi(_client, custom.GetSpecies(), custom.GetLocation(), custom.GetUserApiKey());
-                var observations = await task;
-                PrintObservations(observations);
+                context.SetStrategy(new PresetSearchStrategy());
             }
-
+            var observations = await context.ExecuteStrategy(_client);
+            PrintObservations(observations);
+            
             string cont;
             do
             {
