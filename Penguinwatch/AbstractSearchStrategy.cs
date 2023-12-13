@@ -156,10 +156,6 @@ public abstract class AbstractSearchStrategy : IPenguinSearchStrategy
         {
             Process.Start("xdg-open", "https://ebird.org/api/keygen");
         }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            Process.Start("open", "https://ebird.org/api/keygen");
-        }
         Thread.Sleep(2500);
     }
     
