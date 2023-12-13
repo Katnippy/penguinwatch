@@ -63,6 +63,9 @@ public class Program
     // ? Explicitate the species?
     private static void PrintObservations(List<PenguinObservationModel> observations)
     {
+        Console.WriteLine("");
+        Console.WriteLine("Observations");
+        Console.WriteLine("------------");
         if (observations.Any())
         {
             foreach (var observation in observations)
@@ -81,6 +84,7 @@ public class Program
         {
             Console.WriteLine("No penguins have been observed at this location.");
         }
+        Console.WriteLine("");
     }
     
     public static async Task Main()
