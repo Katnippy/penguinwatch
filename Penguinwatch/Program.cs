@@ -106,7 +106,7 @@ public class Program
             string cont;
             do
             {
-                Console.Write("Do you want to continue? (Y/N) ");
+                Console.Write("Do you wish to continue? (Y/N) ");
                 cont = Console.ReadLine().ToLower();
                 if (cont == "n" || cont == "no")
                 {
