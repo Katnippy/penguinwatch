@@ -4,7 +4,7 @@ A C# program which provides an interface for interacting with the [eBird](https:
 
 ![penguinwatch-github](https://github.com/Katnippy/penguinwatch/assets/131162484/506888ee-ef39-4d51-bbf6-b4248c7a6ad9)
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 * Nothing!
@@ -28,3 +28,6 @@ A C# program which provides an interface for interacting with the [eBird](https:
 
 ## Authors
 * Katnippy (https://github.com/Katnippy)
+
+## Acknowledgements
+* PurpleBooth's [README template](https://github.com/PurpleBooth/a-good-readme-template)
